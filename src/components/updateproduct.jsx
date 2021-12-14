@@ -4,16 +4,20 @@ import axios from "axios";
 class UpdateProduct extends React.Component {
     state = {
         products: {
-            productName: "",
-            category: "",
-            description: " ",
-            brand: " ",
-            colour: " ",
-            size: " ",
-            mrp: " ",
-            priceAfterDiscount: " ",
-            inStock: " ",
-            expectedDelivery: " ",
+            "brand": "",
+            "category": "",
+            "colour": "",
+            "description": "",
+            "id": 0,
+            "image": "",
+            "inStock": true,
+            "mrp": 0,
+            "priceAfterDiscount": 0,
+            "productName": "",
+            "size": ""
+
+            // image:"",
+           // expectedDelivery: " ",
 
         },
     };
@@ -89,7 +93,7 @@ class UpdateProduct extends React.Component {
 
     render() {
         // Object Destructuring
-        const { productName, category, description, brand, colour, size, mrp, priceAfterDiscount, inStock, expectedDelivery } = this.state.products;
+        const { id, productName, category, description, brand, colour, size, mrp, priceAfterDiscount, inStock, image} = this.state.products;
 
         return (<div>
             <form
@@ -97,7 +101,7 @@ class UpdateProduct extends React.Component {
                 className="w-50 mx-auto shadow p-3 mb-5 bg-body rounded mt-3"
             >
 
-                {/* <div className="mb-3">
+                <div className="mb-3">
                  <label htmlFor="id" className="form-label">
                      id
                  </label>
@@ -110,7 +114,7 @@ class UpdateProduct extends React.Component {
                      name="id"
                      onChange={this.handleChange}
                  />
-             </div> */}
+             </div>
                 <div className="mb-3">
                     <label htmlFor="productName" className="form-label">
                         ProductName
@@ -237,16 +241,17 @@ class UpdateProduct extends React.Component {
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="expectedDelivery" className="form-label">
-                        expectedDelivery
+                    <label htmlFor="image" className="form-label" >
+                        product image
                     </label>
                     <input
-                        type="date"
+                        type="text"
                         className="form-control"
-                        id="expectedDelivery"
+                        id="image"
                         aria-describedby="emailHelp"
-                        value={expectedDelivery}
-                        name="expectedDelivery"
+                        value={image}
+                        name="image"
+                        accept=".jpg"
                         onChange={this.handleChange}
                     />
                 </div>

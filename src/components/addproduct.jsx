@@ -1,18 +1,22 @@
 import axios from "axios";
 import React from 'react';
+
 class AddProduct extends React.Component {
     state = {
         products: {
-            productName: "",
-            category: "",
-            description: " ",
-            brand: " ",
-            colour: " ",
-            size: " ",
-            mrp: " ",
-            priceAfterDiscount: " ",
-            inStock: " ",
-            expectedDelivery: " ",
+
+            "brand": "",
+            "category": "",
+            "colour": "",
+            "description": "",
+            "id": 0,
+            "image": "",
+            "inStock": true,
+            "mrp": 0,
+            "priceAfterDiscount": 0,
+            "productName": "",
+            "size": ""
+
 
         },
     };
@@ -47,9 +51,17 @@ class AddProduct extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         console.log("handleSubmit");
+        //  var dt =  new Date(this.state.products.expectedDelivery);
+        // console.log(typeof(dt));
+        const products = { ...this.state.products };
+        //  products.expectedDelivery = dt;
+        console.log(products);
+
+        this.setState({ products: products });
+
         // Send post request to rest api
         axios
-            .post("http://localhost:8080/onlinesportshopee/products/addproduct", this.state.products)
+            .post("http://localhost:8080/onlinesportshopee/products/addproduct", products)
             .then((res) => {
                 console.log(res.data);
                 alert(
@@ -62,7 +74,7 @@ class AddProduct extends React.Component {
 
     render() {
         // Object Destructuring
-        const { productName, category, description, brand, colour, size, mrp, priceAfterDiscount, inStock, expectedDelivery } = this.state.products;
+        const { productName, category, description, brand, colour, size, mrp, priceAfterDiscount, inStock, image } = this.state.products;
 
         return (<div style={{
             backgroundImage: "url(" + "https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" + ")",
@@ -205,11 +217,11 @@ class AddProduct extends React.Component {
                     <label htmlFor="inStock" className="form-label">
                         inStock
                     </label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected></option>
+                    <select class="form-select" aria-label="Default select example" >
+
                         <option value="1">True</option>
                         <option value="2">False</option></select>
-                    {/* <input
+                    <input
                         type="boolean"
                         className="form-control"
                         id="inStock"
@@ -217,25 +229,26 @@ class AddProduct extends React.Component {
                         value={inStock}
                         name="inStock"
                         onChange={this.handleChange}
-                    /> */}
+                    />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="expectedDelivery" className="form-label" >
-                        expectedDelivery
+                    <label htmlFor="image" className="form-label" >
+                        product image
                     </label>
                     <input
-                        type="date"
+                        type="text"
                         className="form-control"
-                        id="expectedDelivery"
+                        id="image"
                         aria-describedby="emailHelp"
-                        value={expectedDelivery}
-                        name="expectedDelivery"
+                        value={image}
+                        name="image"
+                        accept=".jpg"
                         onChange={this.handleChange}
                     />
                 </div>
 
                 <div className="d-grid gap-2 mt-3">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="Submit" className="btn btn-primary">
                         Submit
                     </button>
                 </div>
