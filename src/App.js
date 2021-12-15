@@ -8,6 +8,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Product from "./components/product";
 import AddProduct from "./components/addproduct";
 import UpdateProduct from "./components/updateproduct";
+import ViewProducts from "./components/viewproducts";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/addproduct" component={AddProduct} />
         <Route path="/product" component={Product} />
         <Route path="/updateproduct/:productId" component={UpdateProduct} />
+        <Route path="/viewproducts" component={ViewProducts} />
         <Redirect exact path="/" to="/home" />
         <Route component={PageNotFound} />
       </Switch>

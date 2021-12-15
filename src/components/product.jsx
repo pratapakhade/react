@@ -99,7 +99,10 @@ class Product extends React.Component {
                             <td>{p.mrp}</td>
                             <td>{p.priceAfterDiscount}</td>
                             <td>{p.inStock}</td>
-                           <td> <img src={p.image} alt="sport image"/></td>
+                           {/* <td> <img src={p.image} alt="sport image"/></td> */}
+                           {/* <td> <img src={`http://localhost:8080/${p.image}`} width = "50px" alt={p.image} /></td> */}
+                             <td> <img src={p.image}  width = "100px" alt={p.image}/></td>
+
                             <td><button className="btn btn-danger" onClick={() => this.handleDelete(p.id)}>Delete</button>
                               <Link to={`/updateproduct/${p.id}`} className="btn btn-success">  Update</Link></td>
                         </tr>

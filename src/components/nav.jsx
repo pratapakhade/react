@@ -36,6 +36,9 @@ const Nav = () => {
               <li className="nav-item">
               <NavLink className="navbar-brand" to="/addproduct">AddProducts</NavLink>
               </li>
+              <li className="nav-item">
+              <NavLink className="navbar-brand" to="/viewproducts">ViewProducts</NavLink>
+              </li>
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
